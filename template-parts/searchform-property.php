@@ -1,1 +1,0 @@
-<?php // Search form removed. ?>
