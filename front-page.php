@@ -13,11 +13,20 @@ get_header();
     <!-- Hero Section -->
     <section class="hero-section">
         <div class="container">
-            <div class="hero-content fade-in">
+            <div class="hero-content">
                 <h1 class="hero-title">מצא את הבית המושלם בגליל המערבי</h1>
                 <p class="hero-subtitle">נדל"ן בכפר - המומחים לנכסים כפריים במושבים, קיבוצים ויישובי גליל</p>
-                
-                <!-- search removed per request -->
+
+                <div class="hero-cta-buttons">
+                    <a href="<?php echo esc_url(get_post_type_archive_link('property')); ?>" class="btn btn-primary btn-icon">
+                        🏡 צפה בנכסים
+                    </a>
+                    <a href="https://wa.me/972542623399?text=שלום, אני מעוניין/ת לקבל פרטים על נכסים בגליל"
+                       class="btn btn-whatsapp btn-icon"
+                       target="_blank">
+                        💬 שלחו הודעה
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -66,60 +75,48 @@ get_header();
     </section>
 
     <!-- Why Choose Us Section -->
-    <section class="section section-alt">
+    <section class="section section-alt scroll-reveal">
         <div class="container">
             <div class="text-center mb-4">
                 <h2>למה לבחור בנו?</h2>
                 <p>הסיבות שגורמות ללקוחות שלנו לבחור בנו</p>
             </div>
 
-            <div class="properties-grid">
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🏡</div>
-                        <h3>ניסיון מקומי</h3>
-                        <p>מכירים כל פינה בגליל המערבי - מושבים, קיבוצים ויישובים כפריים</p>
-                    </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon icon-home"></div>
+                    <h3>ניסיון מקומי</h3>
+                    <p>מכירים כל פינה בגליל המערבי - מושבים, קיבוצים ויישובים כפריים</p>
                 </div>
 
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🤝</div>
-                        <h3>שירות אישי</h3>
-                        <p>ליווי צמוד לאורך כל התהליך - מהחיפוש ועד לקבלת המפתחות</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-handshake"></div>
+                    <h3>שירות אישי</h3>
+                    <p>ליווי צמוד לאורך כל התהליך - מהחיפוש ועד לקבלת המפתחות</p>
                 </div>
 
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">⭐</div>
-                        <h3>מוניטין מוכח</h3>
-                        <p>מאות לקוחות מרוצים שמצאו את ביתם בעזרתנו</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-star"></div>
+                    <h3>מוניטין מוכח</h3>
+                    <p>מאות לקוחות מרוצים שמצאו את ביתם בעזרתנו</p>
                 </div>
 
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">💡</div>
-                        <h3>ייעוץ מקצועי</h3>
-                        <p>הדרכה משפטית, ליווי משכנתא וכל המידע שתצטרכו</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-lightbulb"></div>
+                    <h3>ייעוץ מקצועי</h3>
+                    <p>הדרכה משפטית, ליווי משכנתא וכל המידע שתצטרכו</p>
                 </div>
 
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">🔍</div>
-                        <h3>נכסים ייחודיים</h3>
-                        <p>גישה לנכסים שלא תמצאו במקומות אחרים</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-search"></div>
+                    <h3>נכסים ייחודיים</h3>
+                    <p>גישה לנכסים שלא תמצאו במקומות אחרים</p>
                 </div>
 
-                <div class="property-card">
-                    <div class="property-content text-center">
-                        <div style="font-size: 3rem; margin-bottom: 1rem;">📞</div>
-                        <h3>זמינות מלאה</h3>
-                        <p>תמיד זמינים לענות על שאלות ולעזור בכל נושא</p>
-                    </div>
+                <div class="feature-card">
+                    <div class="feature-icon icon-phone"></div>
+                    <h3>זמינות מלאה</h3>
+                    <p>תמיד זמינים לענות על שאלות ולעזור בכל נושא</p>
                 </div>
             </div>
         </div>

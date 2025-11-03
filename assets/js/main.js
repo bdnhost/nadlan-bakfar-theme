@@ -107,6 +107,36 @@
     });
 
     /**
+     * Header Scroll State
+     */
+    $(window).on('scroll', function() {
+        var scroll = $(window).scrollTop();
+
+        if (scroll >= 50) {
+            $('.site-header').addClass('scrolled');
+        } else {
+            $('.site-header').removeClass('scrolled');
+        }
+    });
+
+    /**
+     * Scroll Reveal Animation
+     */
+    function revealOnScroll() {
+        $('.scroll-reveal').each(function() {
+            var elementTop = $(this).offset().top;
+            var elementBottom = elementTop + $(this).outerHeight();
+            var viewportTop = $(window).scrollTop();
+            var viewportBottom = viewportTop + $(window).height();
+
+            // Reveal when element is 80% visible in viewport
+            if (elementTop < viewportBottom - 100 && elementBottom > viewportTop) {
+                $(this).addClass('revealed');
+            }
+        });
+    }
+
+    /**
      * Fade In Animation on Scroll
      */
     function fadeInOnScroll() {
@@ -115,19 +145,21 @@
             var elementBottom = elementTop + $(this).outerHeight();
             var viewportTop = $(window).scrollTop();
             var viewportBottom = viewportTop + $(window).height();
-            
+
             if (elementBottom > viewportTop && elementTop < viewportBottom) {
                 $(this).css('opacity', '1');
             }
         });
     }
 
-    // Initialize fade in
+    // Initialize animations
     $('.fade-in').css('opacity', '0');
     fadeInOnScroll();
-    
+    revealOnScroll();
+
     $(window).on('scroll', function() {
         fadeInOnScroll();
+        revealOnScroll();
     });
 
     /**
