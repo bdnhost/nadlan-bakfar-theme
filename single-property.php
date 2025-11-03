@@ -333,7 +333,8 @@ while (have_posts()) :
                                     }
                                 });
                             </script>
-                            
+
+                            <?php
                             // Display the form more robustly and show a helpful message if CF7
                             // isn't active or the shortcode isn't processed.
                             $shortcode = '[contact-form-7 id="' . esc_attr($contact_form_id) . '"]';
@@ -345,7 +346,7 @@ while (have_posts()) :
                                 // Shortcode not processed - likely plugin inactive or wrong ID
                                 echo '<div class="notice notice-error" style="margin:0;padding:12px;border-radius:6px;background:#fff6f6;color:#7a1f1f;">';
                                 echo '<strong>טופס לא נטען:</strong> ודא שהתוסף Contact Form 7 פעיל ושה‑ID של הטופס נכון (כעת מוגדר: ' . esc_html($contact_form_id) . ').';
-                                echo '<br/>כפתור בדיקה: <a href="' . esc_url(admin_url('admin.php?page=wpcf7"')) . '">פתח את הגדרות Contact Form 7</a>';
+                                echo '<br/>כפתור בדיקה: <a href="' . esc_url(admin_url('admin.php?page=wpcf7')) . '">פתח את הגדרות Contact Form 7</a>';
                                 echo '</div>';
                             } else {
                                 echo $form_html;
