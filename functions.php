@@ -924,6 +924,178 @@ function nadlan_sitemap_posts($args, $post_type) {
 add_filter('wp_sitemaps_posts_query_args', 'nadlan_sitemap_posts', 10, 2);
 
 /**
+ * Theme Customizer
+ */
+function nadlan_customize_register($wp_customize) {
+
+    // Add Hero Section Panel
+    $wp_customize->add_section('nadlan_hero_section', array(
+        'title' => __('הגדרות Hero (דף הבית)', 'nadlan-bakfar'),
+        'priority' => 30,
+        'description' => __('התאם אישית את סקציית ההירו בדף הבית', 'nadlan-bakfar'),
+    ));
+
+    // Hero Background Image
+    $wp_customize->add_setting('nadlan_hero_image', array(
+        'default' => '',
+        'sanitize_callback' => 'esc_url_raw',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'nadlan_hero_image', array(
+        'label' => __('תמונת רקע להירו', 'nadlan-bakfar'),
+        'section' => 'nadlan_hero_section',
+        'settings' => 'nadlan_hero_image',
+        'description' => __('העלה תמונת רקע להירו (מומלץ: 1920x800 פיקסלים)', 'nadlan-bakfar'),
+    )));
+
+    // Hero Title
+    $wp_customize->add_setting('nadlan_hero_title', array(
+        'default' => 'מצא את הבית המושלם בגליל המערבי',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_hero_title', array(
+        'label' => __('כותרת ראשית', 'nadlan-bakfar'),
+        'section' => 'nadlan_hero_section',
+        'type' => 'text',
+    ));
+
+    // Hero Subtitle
+    $wp_customize->add_setting('nadlan_hero_subtitle', array(
+        'default' => 'נדל"ן בכפר - המומחים לנכסים כפריים במושבים, קיבוצים ויישובי גליל',
+        'sanitize_callback' => 'sanitize_textarea_field',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_hero_subtitle', array(
+        'label' => __('כותרת משנה', 'nadlan-bakfar'),
+        'section' => 'nadlan_hero_section',
+        'type' => 'textarea',
+    ));
+
+    // Show/Hide Hero CTA Buttons
+    $wp_customize->add_setting('nadlan_hero_show_buttons', array(
+        'default' => true,
+        'sanitize_callback' => 'wp_validate_boolean',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_hero_show_buttons', array(
+        'label' => __('הצג כפתורי פעולה', 'nadlan-bakfar'),
+        'section' => 'nadlan_hero_section',
+        'type' => 'checkbox',
+    ));
+
+    // Hero Overlay Opacity
+    $wp_customize->add_setting('nadlan_hero_overlay_opacity', array(
+        'default' => 75,
+        'sanitize_callback' => 'absint',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_hero_overlay_opacity', array(
+        'label' => __('עוצמת כיסוי צבע (0-100)', 'nadlan-bakfar'),
+        'section' => 'nadlan_hero_section',
+        'type' => 'number',
+        'input_attrs' => array(
+            'min' => 0,
+            'max' => 100,
+            'step' => 5,
+        ),
+        'description' => __('שקיפות השכבה הצבעונית מעל התמונה (0 = שקוף, 100 = אטום)', 'nadlan-bakfar'),
+    ));
+
+    // Add Contact Info Section
+    $wp_customize->add_section('nadlan_contact_info', array(
+        'title' => __('פרטי יצירת קשר', 'nadlan-bakfar'),
+        'priority' => 31,
+        'description' => __('פרטי יצירת קשר לאתר', 'nadlan-bakfar'),
+    ));
+
+    // Phone Number
+    $wp_customize->add_setting('nadlan_phone', array(
+        'default' => '054-262-3399',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_phone', array(
+        'label' => __('מספר טלפון', 'nadlan-bakfar'),
+        'section' => 'nadlan_contact_info',
+        'type' => 'text',
+    ));
+
+    // WhatsApp Number (without dashes)
+    $wp_customize->add_setting('nadlan_whatsapp', array(
+        'default' => '972542623399',
+        'sanitize_callback' => 'sanitize_text_field',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_whatsapp', array(
+        'label' => __('מספר וואטסאפ', 'nadlan-bakfar'),
+        'section' => 'nadlan_contact_info',
+        'type' => 'text',
+        'description' => __('מספר בפורמט בינלאומי ללא מקפים (לדוגמה: 972542623399)', 'nadlan-bakfar'),
+    ));
+
+    // Email
+    $wp_customize->add_setting('nadlan_email', array(
+        'default' => get_option('admin_email'),
+        'sanitize_callback' => 'sanitize_email',
+        'transport' => 'refresh',
+    ));
+
+    $wp_customize->add_control('nadlan_email', array(
+        'label' => __('כתובת אימייל', 'nadlan-bakfar'),
+        'section' => 'nadlan_contact_info',
+        'type' => 'email',
+    ));
+}
+add_action('customize_register', 'nadlan_customize_register');
+
+/**
+ * Output Custom CSS for Hero Section
+ */
+function nadlan_customizer_css() {
+    $hero_image = get_theme_mod('nadlan_hero_image');
+    $overlay_opacity = get_theme_mod('nadlan_hero_overlay_opacity', 75);
+
+    // Convert opacity from 0-100 to 0-1 for CSS
+    $overlay_alpha_start = $overlay_opacity / 100 * 0.85;
+    $overlay_alpha_end = $overlay_opacity / 100 * 0.75;
+
+    ?>
+    <style type="text/css">
+        <?php if ($hero_image) : ?>
+        .hero-section {
+            background: linear-gradient(135deg, rgba(107,142,35,<?php echo esc_attr($overlay_alpha_start); ?>) 0%, rgba(139,69,19,<?php echo esc_attr($overlay_alpha_end); ?>) 100%),
+                        url('<?php echo esc_url($hero_image); ?>') center/cover no-repeat !important;
+        }
+        <?php endif; ?>
+    </style>
+    <?php
+}
+add_action('wp_head', 'nadlan_customizer_css');
+
+/**
+ * Helper function to get contact info from customizer
+ */
+function nadlan_get_phone() {
+    return get_theme_mod('nadlan_phone', '054-262-3399');
+}
+
+function nadlan_get_whatsapp() {
+    return get_theme_mod('nadlan_whatsapp', '972542623399');
+}
+
+function nadlan_get_email() {
+    return get_theme_mod('nadlan_email', get_option('admin_email'));
+}
+
+/**
  * Property Importer (CSV)
  * Adds an admin submenu under the Property post type to import properties from CSV.
  */

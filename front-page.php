@@ -14,19 +14,21 @@ get_header();
     <section class="hero-section">
         <div class="container">
             <div class="hero-content">
-                <h1 class="hero-title">מצא את הבית המושלם בגליל המערבי</h1>
-                <p class="hero-subtitle">נדל"ן בכפר - המומחים לנכסים כפריים במושבים, קיבוצים ויישובי גליל</p>
+                <h1 class="hero-title"><?php echo esc_html(get_theme_mod('nadlan_hero_title', 'מצא את הבית המושלם בגליל המערבי')); ?></h1>
+                <p class="hero-subtitle"><?php echo esc_html(get_theme_mod('nadlan_hero_subtitle', 'נדל"ן בכפר - המומחים לנכסים כפריים במושבים, קיבוצים ויישובי גליל')); ?></p>
 
+                <?php if (get_theme_mod('nadlan_hero_show_buttons', true)) : ?>
                 <div class="hero-cta-buttons">
                     <a href="<?php echo esc_url(get_post_type_archive_link('property')); ?>" class="btn btn-primary btn-icon">
                         🏡 צפה בנכסים
                     </a>
-                    <a href="https://wa.me/972542623399?text=שלום, אני מעוניין/ת לקבל פרטים על נכסים בגליל"
+                    <a href="https://wa.me/<?php echo esc_attr(nadlan_get_whatsapp()); ?>?text=שלום, אני מעוניין/ת לקבל פרטים על נכסים בגליל"
                        class="btn btn-whatsapp btn-icon"
                        target="_blank">
                         💬 שלחו הודעה
                     </a>
                 </div>
+                <?php endif; ?>
             </div>
         </div>
     </section>
@@ -128,12 +130,12 @@ get_header();
             <h2>מוכנים למצוא את הבית החדש שלכם?</h2>
             <p style="font-size: 1.25rem; margin-bottom: 2rem;">צרו קשר עכשיו ונתחיל לחפש ביחד</p>
             <div class="d-flex justify-content-center gap-2 flex-wrap">
-                <a href="https://wa.me/972542623399?text=שלום, אני מעוניין/ת לקבל פרטים על נכסים בגליל" 
-                   class="btn btn-whatsapp btn-icon" 
+                <a href="https://wa.me/<?php echo esc_attr(nadlan_get_whatsapp()); ?>?text=שלום, אני מעוניין/ת לקבל פרטים על נכסים בגליל"
+                   class="btn btn-whatsapp btn-icon"
                    target="_blank">
                     💬 שלחו הודעה בוואטסאפ
                 </a>
-                <a href="tel:+972542623399" class="btn btn-primary btn-icon">
+                <a href="tel:+<?php echo esc_attr(str_replace('-', '', nadlan_get_phone())); ?>" class="btn btn-primary btn-icon">
                     📞 התקשרו עכשיו
                 </a>
                 <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn-secondary btn-icon">

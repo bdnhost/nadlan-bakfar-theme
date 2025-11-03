@@ -16,7 +16,7 @@
                         <a href="https://instagram.com" class="social-link" target="_blank" rel="noopener" aria-label="Instagram">
                             📷
                         </a>
-                        <a href="https://wa.me/972542623399" class="social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
+                        <a href="https://wa.me/<?php echo esc_attr(nadlan_get_whatsapp()); ?>" class="social-link" target="_blank" rel="noopener" aria-label="WhatsApp">
                             💬
                         </a>
                     </div>
@@ -48,8 +48,8 @@
                 <div class="footer-widget">
                     <h3>צור קשר</h3>
                     <ul>
-                        <li>📞 <a href="tel:+972542623399">054-262-3399</a></li>
-                        <li>✉️ <a href="mailto:info@nadlan-bakfar.top">info@nadlan-bakfar.top</a></li>
+                        <li>📞 <a href="tel:+<?php echo esc_attr(str_replace('-', '', nadlan_get_phone())); ?>"><?php echo esc_html(nadlan_get_phone()); ?></a></li>
+                        <li>✉️ <a href="mailto:<?php echo esc_attr(nadlan_get_email()); ?>"><?php echo esc_html(nadlan_get_email()); ?></a></li>
                         <li>📍 גליל מערבי, ישראל</li>
                         <li>🕐 ראשון-חמישי: 9:00-18:00<br>שישי: 9:00-13:00</li>
                     </ul>
@@ -68,9 +68,9 @@
 </footer>
 
 <!-- Floating WhatsApp Button -->
-<a href="https://wa.me/972542623399?text=שלום, אני מעוניין/ת לקבל פרטים נוספים על נכס" 
-   class="whatsapp-float" 
-   target="_blank" 
+<a href="https://wa.me/<?php echo esc_attr(nadlan_get_whatsapp()); ?>?text=שלום, אני מעוניין/ת לקבל פרטים נוספים על נכס"
+   class="whatsapp-float"
+   target="_blank"
    rel="noopener"
    aria-label="צור קשר בוואטסאפ">
     💬

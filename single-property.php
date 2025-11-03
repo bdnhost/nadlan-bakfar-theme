@@ -253,14 +253,14 @@ while (have_posts()) :
                                 </div>
                             </div>
 
-                            <a href="https://wa.me/972542623399?text=שלום, אני מעוניין/ת לקבל פרטים על הנכס: <?php echo urlencode(get_the_title()); ?>" 
-                               class="btn btn-whatsapp btn-block btn-icon" 
+                            <a href="https://wa.me/<?php echo esc_attr(nadlan_get_whatsapp()); ?>?text=שלום, אני מעוניין/ת לקבל פרטים על הנכס: <?php echo urlencode(get_the_title()); ?>"
+                               class="btn btn-whatsapp btn-block btn-icon"
                                target="_blank">
                                 💬 שלח הודעה בוואטסאפ
                             </a>
 
-                            <a href="tel:+972542623399" class="btn btn-primary btn-block btn-icon mt-2">
-                                📞 התקשר עכשיו
+                            <a href="tel:+<?php echo esc_attr(str_replace('-', '', nadlan_get_phone())); ?>" class="btn btn-primary btn-block btn-icon mt-2">
+                                📞 התקשר עכשיו: <?php echo esc_html(nadlan_get_phone()); ?>
                             </a>
                         </div>
 
