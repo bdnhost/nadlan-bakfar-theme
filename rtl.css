@@ -1,0 +1,69 @@
+/*
+Theme Name: נדל״ן בכפר
+RTL Stylesheet
+*/
+
+/* RTL specific adjustments */
+body {
+    direction: rtl;
+    text-align: right;
+}
+
+/* Navigation adjustments */
+.main-navigation ul {
+    padding-right: 0;
+}
+
+.main-navigation li {
+    float: right;
+}
+
+/* Property card adjustments */
+.property-status {
+    right: auto;
+    left: var(--spacing-sm);
+}
+
+/* Form adjustments */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="number"],
+textarea,
+select {
+    text-align: right;
+}
+
+/* Gallery thumbnails */
+.gallery-thumbnails {
+    direction: rtl;
+}
+
+/* Meta items */
+.meta-grid {
+    direction: rtl;
+}
+
+/* Breadcrumbs */
+.breadcrumbs {
+    direction: rtl;
+}
+
+/* Float adjustments */
+.whatsapp-float {
+    left: auto;
+    right: 20px;
+}
+
+.back-to-top {
+    left: auto;
+    right: 20px;
+}
+
+/* Responsive menu */
+@media (max-width: 768px) {
+    .mobile-menu-toggle {
+        margin-left: 0;
+        margin-right: auto;
+    }
+}

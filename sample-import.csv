@@ -1,0 +1,3 @@
+title,content,price,rooms,bathrooms,built_area,land_area,address,parking,agent_name,agent_phone,latitude,longitude,status,type,location,featured_image,gallery_images
+"דירת 3 חדרים בת"א","דירה מרווחת ומשופצת בקומה גבוהה, קרובה לתחבורה ולחנויות.",1200000,3,2,85,0,"רחוב הרצל 10, תל-אביב",1,"יעקב לוי","050-1234567",32.0853,34.7818,למכירה,דירה,תל-אביב,https://via.placeholder.com/1200x800.jpg,https://via.placeholder.com/300x200.jpg|https://via.placeholder.com/300x200.jpg
+"קוטג' יוקרתי בשרון","בית פרטי חדש עם חצר גדולה וכניסה למשאית.",4200000,6,4,320,600,"שדרות הכרמל 5, כפר סבא",3,"אילנה כהן","052-9876543",32.1829,34.9152,למכירה,קוטג',כפר-סבא,https://via.placeholder.com/1200x800.jpg,https://via.placeholder.com/300x200.jpg;https://via.placeholder.com/300x200.jpg
